@@ -626,7 +626,10 @@
     <p class="sub">Tell us your dates and interests — we’ll shape the perfect itinerary.</p>
 
     <!-- Booking Form -->
-     <form action="https://script.google.com/macros/s/AKfycbzCraszgflRjn9y01DSaZ5dUuEVlmPq-SyWhEiZbgSYQdHxNO0m5lckBOq_xkdGedQ/exec" method="POST"></form>
+    <form
+      action="https://script.google.com/macros/s/AKfycbzCraszgflRjn9y01DSaZ5dUuEVlmPq-SyWhEiZbgSYQdHxNO0m5lckBOq_xkdGedQ/exec"
+      method="POST"
+    >
       <div class="form-row">
         <input type="text" name="name" placeholder="Full Name" required />
         <input type="email" name="email" placeholder="Email Address" required />
@@ -636,17 +639,23 @@
         <input type="tel" name="phone" placeholder="Phone Number (+251...)" required />
         <select name="package" required>
           <option value="">Select Package</option>
-          <option>City tour</option>
-          <option>Northern Ethiopia tour</option>
-          <option>Southern Ethiopia tour</option>
-          <option>Hiking</option>
-          <option>Camping</option>
-          <option>2026 trip</option>
+          <option value="City tour">City tour</option>
+          <option value="Northern Ethiopia tour">Northern Ethiopia tour</option>
+          <option value="Southern Ethiopia tour">Southern Ethiopia tour</option>
+          <option value="Hiking">Hiking</option>
+          <option value="Camping">Camping</option>
+          <option value="2026 trip">2026 trip</option>
         </select>
       </div>
 
       <div class="form-row">
-        <input type="number" name="travellers" placeholder="Number of travellers" min="1" required />
+        <input
+          type="number"
+          name="travellers"
+          placeholder="Number of travellers"
+          min="1"
+          required
+        />
       </div>
 
       <div class="form-row">
@@ -654,12 +663,16 @@
         <input type="date" name="endDate" required />
       </div>
 
-      <textarea name="message" placeholder="Special requests, group size, preferences..."></textarea>
+      <textarea
+        name="message"
+        placeholder="Special requests, group size, preferences..."
+      ></textarea>
 
       <button type="submit">Confirm Booking</button>
     </form>
   </div>
 </section>
+
 
 <style>
 /* Booking Section Styles */
@@ -1093,3 +1106,4 @@
 
 </body>
 </html>
+
