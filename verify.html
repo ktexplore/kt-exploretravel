@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KTExplore Ticket Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+      background: #f4f6f8;
+    }
+    .box {
+      max-width: 420px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .valid {
+      color: #1e7e34;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .used {
+      color: #856404;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    .invalid {
+      color: #c82333;
+      font-size: 26px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>🎟️ KTExplore Ticket</h2>
+    <p id="status">Checking ticket...</p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ticket = params.get("ticket");
+
+    const statusEl = document.getElementById("status");
+
+    if (!ticket) {
+      statusEl.textContent = "❌ No ticket found";
+      statusEl.className = "invalid";
+    } else {
+      // ⚠️ PASTE YOUR DEPLOYED GOOGLE SCRIPT URL BELOW
+      const SCRIPT_URL = "PASTE_YOUR_SCRIPT_URL_HERE";
+
+      fetch(`${SCRIPT_URL}?ticket=${ticket}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.status === "VALID") {
+            statusEl.textContent = "✅ VALID TICKET";
+            statusEl.className = "valid";
+          } else if (data.status === "USED") {
+            statusEl.textContent = "⚠️ TICKET ALREADY USED";
+            statusEl.className = "used";
+          } else {
+            statusEl.textContent = "❌ INVALID TICKET";
+            statusEl.className = "invalid";
+          }
+        })
+        .catch(() => {
+          statusEl.textContent = "❌ Verification error";
+          statusEl.className = "invalid";
+        });
+    }
+  </script>
+
+</body>
+</html>
